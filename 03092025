@@ -1,0 +1,22 @@
+class Employee:
+    def __init__(self, name, hourly_wage):
+        self.name = name
+        self.hourly_wage = hourly_wage
+
+    def calculate_weekly_salary(self, hours_worked):
+        gross_salary = self.hourly_wage * hours_worked
+        return gross_salary
+
+    def calculate_net_salary(self, hours_worked):
+        gross_salary = self.calculate_weekly_salary(hours_worked)
+        tax_deduction = gross_salary * 0.2  # 20% tax
+        social_security = gross_salary * 0.062  # 6.2% Social Security
+        medicare = gross_salary * 0.0145  # 1.45% Medicare
+        net_salary = gross_salary - (tax_deduction + social_security + medicare)
+        return net_salary
+
+# Example usage
+employee = Employee("John Doe", 20)
+hours_worked = 40
+print(f"Gross Salary: ${employee.calculate_weekly_salary(hours_worked):.2f}")
+print(f"Net Salary: ${employee.calculate_net_salary(hours_worked):.2f}")
